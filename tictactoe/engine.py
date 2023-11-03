@@ -34,6 +34,7 @@ class Engine:
                 if alpha > beta:
                     return max_eval, best_move
             return max_eval, best_move
+            
         else:
             min_eval = float('inf')
             best_move = None
@@ -47,13 +48,13 @@ class Engine:
                 beta = min(min_eval, beta)
                 if beta < alpha:
                     return min_eval, best_move
-            return min_eval, best_move
+            return min_eval, best_move    
 
     def evaluate_board(self, board: Board, depth: int) -> Score:
         if board.winner() == self.ai:
-            return board.size**2 - depth
-        elif board.winner() == self.foe:
             return -1 * board.size**2 - depth
+        elif board.winner() == self.foe:
+            return board.size**2 - depth
         return 0
 
     def evaluate_best_move(self, board: Board) -> Square:
